@@ -11,6 +11,7 @@ import { UNIFIED_API_CONSTANTS } from '../../NaukriMinis/constants';
 import { getQueryParams } from '../../../utils';
 import { DEFAULT_TAGS_QPARAM } from '../constants';
 import { pageSizeConfig } from '../constants';
+import { NG_TAGS } from '../constants';
 
 
 // Simulate API call for unified feed
@@ -206,7 +207,7 @@ export const fetchUnifiedFeed = ({ page = 1, filters = {}, loginStatus, articleI
                         mode
                     }
                 ],
-                tags: [],
+                tags: NG_TAGS,
                 curated_tags: filters.curated_tags || [],
                 source_ids: {
                     include: filters.sourceIds || [],
