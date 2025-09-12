@@ -1,0 +1,162 @@
+.videoContainer {
+    position: relative;
+    width: 100%;
+    min-height: 547px;
+    background: #000;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 0.57;
+    background: #000;
+}
+
+.placeholder {
+    position: relative;
+    width: 100%;
+    height: 547px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a1a;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.noVideo {
+    position: absolute;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.spinnerLoader {
+    color: #fff;
+    font-size: 16px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.videoOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.playButtonContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: all;
+    transition: background 0.2s;
+}
+
+.playButtonContainer:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.playButton {
+    width: 24px;
+    height: 24px;
+    margin-left: 3px; /* Adjust for visual centering */
+}
+
+.bottomRightControls {
+    position: absolute;
+    bottom: 22px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    pointer-events: all;
+}
+
+.muteButton {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.muteButton:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.muteIcon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Make icons white */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .videoContainer {
+        min-height: 400px;
+    }
+    
+    .playButtonContainer {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .playButton {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .muteButton {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .muteIcon {
+        width: 18px;
+        height: 18px;
+    }
+}

@@ -1,0 +1,210 @@
+.videoTuple {
+    background-color: var(--N900);
+    border-radius: 12px;
+    color: var(--N200);
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.header {
+    padding: 12px;
+}
+
+.publisherInfo {
+    height: 60px;
+    padding: 7px 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.publisherLogoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.publisherLogo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.dummyLogo {
+    margin-right: 8px;
+    background: #f7f7f9;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 14px;
+    color: #474d6a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+}
+
+.publisherInfoContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.publisherInfoWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.publisherName {
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--C200);
+    display: flex;
+    align-items: center;
+
+    .verifiedVendorLogo {
+        margin-left: 4px;
+    }
+}
+
+.publishTime {
+    font-weight: 400;
+    line-height: 13px;
+    font-size: 11px;
+    margin-top: 3px;
+    color: var(--800);
+    line-height: 100%;
+}
+
+.videoContainer {
+    position: relative;
+    width: 100%;
+    min-height: 547px;
+}
+
+.caption {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0px;
+    color: #f2f2f2;
+    margin-bottom: 12px;
+
+    .seeMore{
+        color: #BCC5D3;
+        font-weight: 700;
+        background-color: transparent;
+        border: none;
+        padding-left: 0px;
+        padding-right: 0;
+    }
+}
+
+.interactionBarContainer {
+    padding: 16px;
+}
+
+.videoWrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 0.57;
+}
+
+.videoTitle {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.videoPoster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.shimmer {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #13151a 25%, #1a1d24 50%, #13151a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.interactionBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #1c1c1e;
+    border-top: 1px solid #f0f0f0;
+}
+
+.interactionItem {
+    display: flex;
+    align-items: center;
+}
+
+.interactionButton {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.interactionButton:hover {
+    opacity: 0.8;
+}
+
+.interactionIcon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.interactionCount {
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+}
+
+.viewCount {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+}

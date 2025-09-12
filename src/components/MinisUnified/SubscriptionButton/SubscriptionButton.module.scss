@@ -1,0 +1,64 @@
+.subscribeButtonContainer {
+    .button {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+
+    .subscribeButton {
+        all: unset;
+        background: #FFFFFF26;
+        border-radius: 40px;
+        box-sizing: border-box;
+        height: 30px;
+        justify-content: center;
+        padding: 0px 14px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+
+        color: #ffffff;
+        border: 1px solid;
+        border-color: #f2f2f2;
+
+        font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 15px;
+
+        &:hover:not(:disabled) {
+            background: #FFFFFF40;
+            transform: translateY(-1px);
+        }
+    }
+
+    .unsubscribeButton {
+        all: unset;
+        border-radius: 40px;
+        box-sizing: border-box;
+        height: 30px;
+        padding: 0px 14px;
+        min-width: 98px;
+        text-align: center;
+        background: #FFFFFF26;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #ffffff;
+
+        font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 15px;
+
+        &:hover:not(:disabled) {
+            background: #ff4757;
+            transform: translateY(-1px);
+        }
+    }
+}

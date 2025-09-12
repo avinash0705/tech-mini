@@ -1,0 +1,213 @@
+.fullPageShimmer {
+    width: 100%;
+    background: #0f1116;
+    min-height: 100vh;
+    padding: 14px;
+}
+
+.filterChipsShimmer {
+    display: flex;
+    margin-bottom: 24px;
+    gap: 12px;
+    padding: 0 14px;
+}
+
+.filterChip {
+    width: 110px;
+    height: 32px;
+    background: #1d212a;
+    border-radius: 16px;
+    animation: shimmer 2s infinite linear;
+    opacity: 0.6;
+}
+
+.articleShimmerWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.shimmerContainer {
+    width: 100%;
+    background: #1d212a;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    overflow: hidden;
+
+    &:first-child {
+        margin-top: 0px;
+    }
+}
+
+.shimmerCard {
+    background: #1d212a;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.shimmerHeader {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 12px;
+}
+
+.shimmerAvatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #1d212a 25%, #2a3040 50%, #1d212a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+    opacity: 0.8;
+}
+
+.shimmerText {
+    flex: 1;
+
+    .shimmerLine {
+        height: 10px;
+        width: 120px;
+        background: linear-gradient(90deg, #1d212a 25%, #2a3040 50%, #1d212a 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite linear;
+        border-radius: 4px;
+        opacity: 0.8;
+    }
+}
+
+.shimmerBody {
+    padding: 0 16px 16px 16px;
+
+    .shimmerImage {
+        height: 189px;
+        background: linear-gradient(90deg, #1d212a 25%, #2a3040 50%, #1d212a 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite linear;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        opacity: 0.8;
+    }
+
+    .shimmerTitle {
+        height: 16px;
+        background: linear-gradient(90deg, #1d212a 25%, #2a3040 50%, #1d212a 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite linear;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        opacity: 0.8;
+        width: 85%;
+    }
+
+    .shimmerDescription {
+        .shimmerLine {
+            width: 70%;
+            height: 12px;
+            background: linear-gradient(90deg, #1d212a 25%, #2a3040 50%, #1d212a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+            border-radius: 4px;
+            opacity: 0.8;
+        }
+    }
+}
+
+/* Video shimmer variant */
+.videoShimmerContainer {
+    @extend .shimmerContainer;
+    
+    .shimmerCard {
+        .shimmerBody {
+            .shimmerImage {
+                height: 547px; /* Video aspect ratio */
+                border-radius: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .fullPageShimmer {
+        padding: 10px;
+    }
+    
+    .filterChipsShimmer {
+        padding: 0 10px;
+        margin-bottom: 16px;
+    }
+    
+    .filterChip {
+        width: 90px;
+        height: 28px;
+    }
+    
+    .shimmerContainer {
+        margin-bottom: 16px;
+    }
+    
+    .shimmerHeader {
+        padding: 10px 14px;
+    }
+    
+    .shimmerAvatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .shimmerBody {
+        padding: 0 14px 14px 14px;
+        
+        .shimmerImage {
+            height: 160px;
+            margin-bottom: 12px;
+        }
+        
+        .shimmerTitle {
+            height: 14px;
+            margin-bottom: 10px;
+        }
+    }
+    
+    .videoShimmerContainer {
+        .shimmerCard {
+            .shimmerBody {
+                .shimmerImage {
+                    height: 400px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .shimmerBody {
+        .shimmerImage {
+            height: 140px;
+        }
+    }
+    
+    .videoShimmerContainer {
+        .shimmerCard {
+            .shimmerBody {
+                .shimmerImage {
+                    height: 350px;
+                }
+            }
+        }
+    }
+}

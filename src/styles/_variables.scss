@@ -1,0 +1,63 @@
+@import 'palette.scss';
+
+$extra-bold: 800;
+$bold: 700;
+$semi-bold: 600;
+$medium: 500;
+$regular: 400;
+$light: 300;
+$shimmerbg1: #eaf1f5;
+$shimmerbg2: #eff3f5;
+$font-family-robotos-slab: 'Roboto Slab', serif;
+$font-family-inter: 'Inter', serif;
+$button-success-bg: #0fb57f;
+$live-box-shadow: rgba(0, 0, 0, 0.3);
+$val-black: #1e223c;
+$val-link: #518cff;
+$font-family-satoshi: 'Satoshi';
+
+$white: #ffffff;
+
+/* Neutral / Text Styles */
+$N500: #8292b4;
+$N600: #445578;
+$N800: #1b2437;
+$N700: #474d6a;
+
+/* Neutral/Light */
+$N100: #ffffff;
+$N200: #eaf1f5;
+$N300: #d3e1ea;
+$N400: #e3e7f1;
+$N150: #f5f6f9;
+$N120: #fafbfe;
+
+/* Action */
+$P100: #f1f5ff;
+$P200: #b0c8ff;
+$P300: #88adff;
+$P400: #6191ff;
+$P500: #457eff;
+$P600: #4c8dff;
+
+/* Secondary Action */
+$S100: #fff1ed;
+$S200: #ffbfad;
+$S300: #ff937a;
+$S400: #ff7555;
+
+/* Miscellaneous */
+$M100: #ebf3ff;
+$M200: #f7f7f7;
+$M300: #fffbfa;
+$M400: #fff2f1;
+$M500: #ffe7e1;
+$M600: #fdd8cf;
+$M700: #dbe8ef;
+$M800: #d8d8d8;
+$M900: #e6edff;
+$M1000: #0074ad;
+
+/* Z indexes */
+$apply-button-container: 1200;
+$gallery-container-z-index: 1300;

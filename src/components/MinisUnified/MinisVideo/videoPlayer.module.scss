@@ -1,0 +1,197 @@
+@import '../../../styles/variables.scss';
+
+.video {
+    margin: auto;
+}
+
+.videoContent {
+    display: block;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+
+    .customProgressBarContainer {
+        display: block;
+        width: 100%;
+    }
+    .iconContainer {
+        width: 38px;
+        height: 24px;
+        text-align: center;
+        display: flex;
+        // border-radius: 40px;
+        // background: rgba(18, 18, 36, 0.4);
+
+        &:has(.playIcon) {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+        }
+
+        .likeIcon {
+            height: 35px;
+            width: 35px;
+        }
+
+        .playIcon {
+            width: 27px;
+            height: 33px;
+            position: absolute;
+            top: 15px;
+            left: 19px;
+        }
+
+        .icon {
+            margin: auto;
+        }
+
+        .likeIcon {
+            height: 35px;
+            width: 35px;
+        }
+    }
+    .threeDotsIconContainer {
+        top: 44px;
+        right: 19px;
+        position: absolute;
+    }
+    .bottom_right_icons {
+        display: flex;
+        position: absolute;
+        // top: 17px;
+        right: 16px;
+        bottom: 22px;
+
+        flex-direction: column;
+        gap: 24px;
+        .actionContainer {
+            display: block;
+            flex-wrap: wrap;
+            .actionText {
+                text-align: center;
+                display: block;
+                margin-top: 4px;
+                //styleName: Label/11Bold;
+                font-family: $font-family-satoshi;
+                font-size: 11px;
+                font-weight: 700;
+                line-height: 13px;
+                text-shadow: 1px -1px 4px rgba(0, 0, 0, 0.5);
+                letter-spacing: 0px;
+            }
+        }
+    }
+    .infoContainer {
+        display: flex;
+        position: absolute;
+        bottom: 22px;
+        // padding: 0 20px;
+        flex-direction: column;
+        width: 79%;
+        margin-left: 12px;
+        left: 0;
+
+        .swipeGesture {
+            display: flex;
+            background-color: var(--N800);
+            padding: 6px 0px;
+            width: 141px;
+            height: 40px;
+            border-radius: 6px;
+            margin: 0 auto -5px;
+
+            .circle {
+                width: 29px;
+                height: 29px;
+                background-color: var(--N700);
+                border-radius: 50%;
+                margin-left: 6px;
+                display: flex;
+                justify-content: end;
+                align-items: center;
+            }
+            .gestureBox {
+                width: 35px;
+                height: 36px;
+                scale: 1.4;
+            }
+            .info {
+                font-family: $font-family-satoshi;
+                font-size: 11px;
+                font-weight: 500;
+                line-height: 12px;
+                text-align: center;
+                padding-left: 1px;
+                padding-right: 7px;
+            }
+        }
+        .videoTitle {
+            font-family: $font-family-satoshi;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 18px;
+            letter-spacing: 0px;
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        .viewsContainer {
+            display: flex;
+            height: 15px;
+            margin-bottom: 8px;
+            .viewIcon {
+                width: 14px;
+                height: 15px;
+                display: flex;
+                align-items: center;
+            }
+            .viewsText {
+                display: flex;
+                align-items: center;
+                font-family: $font-family-satoshi;
+                letter-spacing: 0px;
+                margin-left: 4px;
+                font-size: 12px;
+                font-weight: 700;
+                line-height: 15px;
+            }
+        }
+        .sourceInfoContainer {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+
+            .vendorLogo {
+                width: 37px;
+                height: 37px;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+
+            .textContainer {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+
+                .vendorName {
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 100%;
+                    letter-spacing: 0px;
+                    color: #0f1116;
+                }
+
+                .createdTime {
+                    font-weight: 400;
+                    font-size: 11px;
+                    line-height: 100%;
+                    letter-spacing: 0.31px;
+                    color: #0f1116;
+                }
+            }
+        }
+    }
+}

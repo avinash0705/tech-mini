@@ -1,0 +1,106 @@
+// CSS Variables
+// :root {
+//   --N650: #666;
+// }
+
+.interactionBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    margin-top: 12px;
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+}
+
+.interactionItem {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    
+    &:last-child {
+        margin-right: 0;
+        margin-left: auto;
+    }
+}
+
+.interactionButton {
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #8e8e93;
+    cursor: pointer;
+    padding: 0px;
+    transition: transform 0.2s ease;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.interactionIcon {
+    width: 18px;
+    height: 18px;
+    display: block;
+    flex-shrink: 0;
+    filter: brightness(0) saturate(100%) invert(60%) sepia(6%) saturate(625%) hue-rotate(201deg) brightness(96%) contrast(89%);
+}
+
+.interactionCount {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: var(--N650);
+    margin-left: 4px;
+}
+
+.viewCount {
+    display: flex;
+    align-items: center;
+    
+    .interactionCount {
+        color: #647187;
+    }
+    
+    .interactionIcon {
+        filter: brightness(0) saturate(100%) invert(44%) sepia(8%) saturate(1090%) hue-rotate(191deg) brightness(94%) contrast(87%);
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .interactionBar {
+        margin-top: 8px;
+    }
+    
+    .interactionItem {
+        margin-right: 12px;
+    }
+    
+    .interactionIcon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .interactionCount {
+        font-size: 12px;
+    }
+}

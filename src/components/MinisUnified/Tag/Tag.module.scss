@@ -1,0 +1,41 @@
+.tag {
+    display: flex;
+    gap: 2px;
+    opacity: 1;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    padding: 4px 8px;
+    background: #FF7E7E33;
+    justify-content: center;
+    align-items: center;
+
+    .label {
+        color: #FFB4B5;
+        font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 18px;
+        letter-spacing: -1%;
+        vertical-align: middle;
+    }
+}
+
+.TRENDING {
+    background: #8BFF7E33;
+    width: 73px;
+
+    .label {
+        color: #6BCF6D;
+        background: transparent;
+    }
+}
+
+.BREAKING_NEWS {
+    background: #FF7E7E33;
+    width: 102px;
+
+    .label {
+        color: #FFB4B5;
+        background: transparent;
+    }
+}

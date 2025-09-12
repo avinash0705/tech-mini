@@ -1,0 +1,127 @@
+.emptySavedContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 40px 20px;
+    text-align: center;
+    background: #0f1116;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.savedVideosHere {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.savedVideos {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f5f5f5;
+    line-height: 24px;
+    margin: 0;
+}
+
+.watchLater {
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+    line-height: 18px;
+    margin: 0;
+    max-width: 280px;
+}
+
+.startExploreBtn {
+    background: #4777fe;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 24px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.startExploreBtn:hover {
+    background: #3461e6;
+    transform: translateY(-1px);
+}
+
+.startExploreBtn:active {
+    transform: translateY(0);
+}
+
+.ctaIcon {
+    font-size: 16px;
+    display: inline-block;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.ctaText {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f5f5f5;
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .emptySavedContainer {
+        min-height: 300px;
+        padding: 30px 16px;
+    }
+    
+    .savedVideos {
+        font-size: 18px;
+    }
+    
+    .watchLater {
+        font-size: 13px;
+    }
+    
+    .startExploreBtn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .emptySavedContainer {
+        min-height: 250px;
+        padding: 20px 12px;
+    }
+    
+    .savedVideos {
+        font-size: 16px;
+    }
+    
+    .watchLater {
+        font-size: 12px;
+        max-width: 240px;
+    }
+}

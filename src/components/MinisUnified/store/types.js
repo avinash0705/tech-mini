@@ -1,0 +1,36 @@
+// Feed Types
+export const FEED_FETCH_REQUEST = 'FEED_FETCH_REQUEST';
+export const FEED_FETCH_SUCCESS = 'FEED_FETCH_SUCCESS';
+export const FEED_FETCH_FAILURE = 'FEED_FETCH_FAILURE';
+
+// Interaction Types
+export const UPDATE_FEED_INTERACTION = 'UPDATE_FEED_INTERACTION';
+export const UPDATE_FEED_ITEM = 'UPDATE_FEED_ITEM';
+
+// Filter Types
+export const UPDATE_FEED_FILTERS = 'UPDATE_FEED_FILTERS';
+export const CLEAR_FEED_FILTERS = 'CLEAR_FEED_FILTERS';
+export const UPDATE_FEED_FILTERS_DATA = 'UPDATE_FEED_FILTERS_DATA';
+
+// Pagination Types
+export const RESET_FEED_PAGE = 'RESET_FEED_PAGE';
+
+// Save Types
+
+export const UPDATE_FEED_RECORDS_DATA = 'UPDATE_FEED_RECORDS_DATA';
+
+// Handling of saved Count
+export const UPDATE_SAVE_COUNT = 'UPDATE_SAVE_COUNT';
+
+// handling of video state
+export const TOGGLE_VIDEO_AUDIO = 'UPDATE_VIDEO_STATUS';
+export const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE';
+
+
+// handling subscriptions
+export const ARTICLE_SUBSCRIBE_SUCCESS = 'ARTICLE_SUBSCRIBE_SUCCESS';
+export const ARTICLE_UNSUBSCRIBE_SUCCESS = 'ARTICLE_UNSUBSCRIBE_SUCCESS';
+export const ARTICLE_SUBSCRIPTION_INIT = 'ARTICLE_SUBSCRIPTION_INIT';
+
+// handling ask sign in modal
+export const TOGGLE_ASK_SIGN_IN_MODAL = 'TOGGLE_ASK_SIGN_IN_MODAL';
