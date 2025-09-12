@@ -202,7 +202,7 @@ export const fetchUnifiedFeed = ({ page = 1, filters = {}, loginStatus, articleI
             const requestBody = {
                 metadata: [
                     {
-                        content_type: 'UNIFIED_LOGGED_OUT',
+                        content_type: 'UNIFIED',
                         vendor: 'minis',
                         mode
                     }
@@ -218,7 +218,7 @@ export const fetchUnifiedFeed = ({ page = 1, filters = {}, loginStatus, articleI
                 },
                 config: {
                     page,
-                    size: 10
+                    size: 20
                 },
                 saved: filters.saved || false,
                 curated_tags: filters.curated_tags || []
