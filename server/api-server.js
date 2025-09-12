@@ -2,11 +2,16 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:3000', // Allow Next.js frontend
+    origin: [
+        'http://localhost:3000', // Local development
+        'https://tech-mini.vercel.app', // Your Vercel deployment
+        process.env.FRONTEND_URL, // Additional production URL from environment
+        /\.vercel\.app$/, // Allow all Vercel subdomains
+    ].filter(Boolean), // Remove any undefined values
     credentials: true
 }));
 app.use(express.json());

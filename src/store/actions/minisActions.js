@@ -204,7 +204,8 @@ export const fetchUnifiedFeed = ({
 };
 
 export const fetchMinisHomepageFeed = async (config = { page: 1, size: 15 }) => {
-    const url = 'http://localhost:3001/api/feed?filter=true&flow=minis_homepage'
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const url = `${API_BASE_URL}/api/feed?filter=true&flow=minis_homepage`
     
     // Body structure from your working curl command
     const body = {
@@ -260,7 +261,8 @@ export const fetchMinisHomepageFeed = async (config = { page: 1, size: 15 }) => 
 };
 
 export const fetchUnifiedMiniFeed = async (config = { page: 1, size: 10 }) => {
-    const url = 'http://localhost:3001/api/unified-feed?filter=true&flow=minis_unified'
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const url = `${API_BASE_URL}/api/unified-feed?filter=true&flow=minis_unified`
     
     // Body structure from your working curl command
     const body = {

@@ -169,7 +169,8 @@ export const fetchUnifiedFeed = ({ page = 1, filters = {}, loginStatus, articleI
     return async (dispatch) => {
         try {
             const mode = filters.mode || 'Work';
-            let url='http://localhost:3001/api/unified-feed?filter=true&flow=minis_homepage';
+            const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+            let url = `${API_BASE_URL}/api/unified-feed?filter=true&flow=minis_homepage`;
             url += `&flow=${UNIFIED_API_CONSTANTS.FLOW}`;
             const topIds = articleIds.length > 0 ? articleIds : contentIds;
             if (articleIds.length > 0) {

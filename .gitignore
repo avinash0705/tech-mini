@@ -129,8 +129,8 @@ build/
 dist/
 
 # Deployment files
-deployment-guide.md
+# deployment-guide.md
 
 # Local development files
-.env.example
+# .env.example
 node_modules
