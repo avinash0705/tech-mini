@@ -207,7 +207,7 @@ export const fetchUnifiedFeed = ({ page = 1, filters = {}, loginStatus, articleI
                         mode
                     }
                 ],
-                tags: NG_TAGS,
+                tags: filters.tags || [],
                 curated_tags: filters.curated_tags || [],
                 source_ids: {
                     include: filters.sourceIds || [],
@@ -218,7 +218,7 @@ export const fetchUnifiedFeed = ({ page = 1, filters = {}, loginStatus, articleI
                 },
                 config: {
                     page,
-                    size: filters.saved ? pageSizeConfig.SAVED : pageSizeConfig.UNSAVED
+                    size: 10
                 },
                 saved: filters.saved || false,
                 curated_tags: filters.curated_tags || []

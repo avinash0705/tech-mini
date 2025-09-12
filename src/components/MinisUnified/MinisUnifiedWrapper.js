@@ -36,6 +36,7 @@ const BookmarkedIcon = '/icons/bookmarked.svg';
 const ReactionIcon = '/icons/reaction.svg';
 
 const MinisUnifiedWrapper = props => {
+    const { selectedTags = [] } = props; // Accept selectedTags prop
     const router = useRouter();
     const queryParams = router.query;
     const { filters } = queryParams;
@@ -103,6 +104,13 @@ const MinisUnifiedWrapper = props => {
         }
     }, []);
 
+    // Refetch data when selectedTags change
+    useEffect(() => {
+        if (dataFetchedRef.current && selectedTags.length > 0) {
+            fetchInitialData();
+        }
+    }, [selectedTags]);
+
     useEffect(() => {
         if (lastCardRef.current && observerRef.current) {
             observerRef.current.observe(lastCardRef.current);
@@ -122,8 +130,8 @@ const MinisUnifiedWrapper = props => {
                 filters: {
                     mode: currentMode,
                     saved: isSavedTabSelected.current,
-                    tags: [],
-                    curated_tags: [],
+                    tags: selectedTags,
+                    curated_tags: selectedTags, // Use selected tags from props
                     sourceIds: []
                 },
                 loginStatus: loginDetail.isLoggedIn,
@@ -151,7 +159,7 @@ const MinisUnifiedWrapper = props => {
                     mode: currentMode,
                     saved: isSavedTabSelected.current,
                     tags: [],
-                    curated_tags: [],
+                    curated_tags: selectedTags, // Use selected tags from props
                     sourceIds: []
                 },
                 loginStatus: loginDetail.isLoggedIn,
