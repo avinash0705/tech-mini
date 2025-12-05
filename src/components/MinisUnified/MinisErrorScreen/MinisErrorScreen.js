@@ -25,3 +25,5 @@ const MinisErrorScreen = ({
 };
 
 export default MinisErrorScreen;
+
+

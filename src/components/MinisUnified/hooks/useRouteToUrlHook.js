@@ -7,13 +7,27 @@ const useRouteToUrlHook = () => {
     return (options) => {
         const { url, softLoad, preserveNavBarParam, preserveUtmParams, replace } = options || {};
         
-        // For now, just navigate to the URL
-        if (replace) {
-            router.replace(url);
+        // Check if URL is absolute (starts with http:// or https://)
+        const isAbsoluteUrl = url && (url.startsWith('http://') || url.startsWith('https://'));
+        
+        if (isAbsoluteUrl) {
+            // For absolute URLs, use window.location for navigation
+            if (replace) {
+                window.location.replace(url);
+            } else {
+                window.location.href = url;
+            }
         } else {
-            router.push(url);
+            // For relative URLs, use Next.js router
+            if (replace) {
+                router.replace(url);
+            } else {
+                router.push(url);
+            }
         }
     };
 };
 
 export default useRouteToUrlHook;
+
+

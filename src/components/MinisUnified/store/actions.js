@@ -171,8 +171,7 @@ export const fetchUnifiedFeed = ({ page = 1, filters = {}, loginStatus, articleI
         try {
             const mode = filters.mode || 'Work';
             const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-            let url = `${API_BASE_URL}/api/unified-feed?filter=true&flow=minis_homepage`;
-            url += `&flow=${UNIFIED_API_CONSTANTS.FLOW}`;
+            let url = `${API_BASE_URL}/api/unified-feed?filter=true&flow=ng_feed`;
             const topIds = articleIds.length > 0 ? articleIds : contentIds;
             if (articleIds.length > 0) {
                 url += '&topType=articles';
@@ -200,11 +199,11 @@ export const fetchUnifiedFeed = ({ page = 1, filters = {}, loginStatus, articleI
             // });
 
             const requestBody = {
-                metadata: [
+                 "metadata": [
                     {
-                        content_type: 'UNIFIED',
-                        vendor: 'minis',
-                        mode
+                        "content_type": "articles",
+                        "media_type": "text",
+                        "vendor": "minis"
                     }
                 ],
                 tags: filters.tags || [],
@@ -297,3 +296,5 @@ export const getLoginStatus = (dispatch, callback) => {
     if (callback) callback(loginStatus);
     return loginStatus;
 };
+
+

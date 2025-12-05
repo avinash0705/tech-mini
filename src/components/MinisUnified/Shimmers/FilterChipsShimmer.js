@@ -12,3 +12,5 @@ const FilterChipsShimmer = ({ count = 5 }) => {
 };
 
 export default FilterChipsShimmer;
+
+

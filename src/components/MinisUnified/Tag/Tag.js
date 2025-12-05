@@ -48,3 +48,5 @@ const Tag = ({ wrapperClass = '', tagInfo = {} }) => {
 };
 
 export default Tag;
+
+

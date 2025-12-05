@@ -124,7 +124,7 @@ export const removeItemFromSS = (key) => {
 
 // URL creation utilities
 export const createMinisArticlePlayerUrl = (slug, source_id, continuationId, extraParams = {}) => {
-    const MINIS_ARTICLE_PLAYER_URL = '/minis/article-[caption]-aid-[articleId]';
+    const MINIS_ARTICLE_PLAYER_URL = 'https://www.naukri.com/minis/article-[caption]-aid-[articleId]';
     let minisArticlePlayerUrl = MINIS_ARTICLE_PLAYER_URL;
     
     if (slug) {
@@ -156,7 +156,7 @@ export const createMinisArticlePlayerUrl = (slug, source_id, continuationId, ext
 };
 
 export const createSlidePlayerUrl = (caption, source_id, index, continuationId = '', extraParams = {}) => {
-    const MINI_SLIDE_PLAYER_URL = '/minis/slide-[caption]-sid-[slideId]';
+    const MINI_SLIDE_PLAYER_URL = 'https://www.naukri.com/minis/slide-[caption]-sid-[slideId]';
     
     if (caption) {
         const urlCaption = caption
@@ -218,13 +218,17 @@ export const getQueryObj = () => {
 };
 
 export const redirectToAppPage = (url, handlePwaRedirection) => {
+    // Check if URL is already absolute
+    const isAbsoluteUrl = url && (url.startsWith('http://') || url.startsWith('https://'));
+    const finalUrl = isAbsoluteUrl ? url : `https://www.naukri.com${url}`;
+    
     if (
         typeof window.webkit !== 'undefined' &&
         window.webkit.messageHandlers?.naukriAppNavigationHandler?.postMessage
     ) {
         window.webkit.messageHandlers.naukriAppNavigationHandler.postMessage({
             ctaName: 'openApp',
-            pageNavigation: `https://www.naukri.com${url}`,
+            pageNavigation: finalUrl,
             isReload: true,
             keepWebview: true,
             msg: ''
@@ -235,13 +239,13 @@ export const redirectToAppPage = (url, handlePwaRedirection) => {
     ) {
         window.JSUtilityInterface.naukriAppNavigationHandlerWithStack(
             'pageNavigation',
-            `https://www.naukri.com${url}`,
+            finalUrl,
             true,
             '',
             false
         );
     } else {
-        handlePwaRedirection ? handlePwaRedirection() : (window.location.href = url);
+        handlePwaRedirection ? handlePwaRedirection() : (window.location.href = finalUrl);
     }
 };
 

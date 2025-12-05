@@ -336,7 +336,7 @@ const ArticleCard = ({
                             )}
                         </div>
                         <div className={styles.publisherInfoContainer}>
-                            {publisher?.name && (
+                            {publisher?.name ? (
                                 <div className={styles.publisherName}>
                                     {publisher.name}
                                     {publisher?.verified && (
@@ -348,6 +348,10 @@ const ArticleCard = ({
                                             height={14}
                                         />
                                     )}
+                                </div>
+                            ) : (
+                                <div className={styles.dummyLogo}>
+                                    {renderDynamicInitials('')}
                                 </div>
                             )}
                             {publishTime && (
@@ -409,12 +413,12 @@ const ArticleCard = ({
                             <div className={styles.readMore}>
                                 <div className={styles.read__text}>Read more </div>
                                 <div className={styles.img__read}>
-                                    <img
+                                    {/* <img
                                         src={right_arrow}
                                         alt='right_arrow'
                                         width={10}
                                         height={10}
-                                    />{' '}
+                                    />{' '} */}
                                 </div>
                             </div>
                         </div>

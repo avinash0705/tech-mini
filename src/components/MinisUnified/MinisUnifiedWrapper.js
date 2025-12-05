@@ -130,8 +130,8 @@ const MinisUnifiedWrapper = props => {
                 filters: {
                     mode: currentMode,
                     saved: isSavedTabSelected.current,
-                    tags: selectedTags,
-                    curated_tags: selectedTags, // Use selected tags from props
+                    tags: ["naukri_gulf"],
+                    curated_tags: [], // Use selected tags from props
                     sourceIds: []
                 },
                 loginStatus: loginDetail.isLoggedIn,
@@ -206,22 +206,27 @@ const MinisUnifiedWrapper = props => {
 
     // Render individual content items
     const renderContentItem = (record, index) => {
-        const content = record.contents?.[0];        
         const metadata = record.metadata;
         const contentType = metadata?.content_type || 'articles';
+        const content = record.content; // Extract content from record
+        
+        // Safety check: return null if content is missing
+        if (!content) {
+            return null;
+        }
         
         // Get interaction data
         const interactionCounts = {
-            likes: content.interaction_data?.like?.count || 0,
-            share: content.interaction_data?.share?.count || 0,
-            bookmarks: content.interaction_data?.save?.count || 0,
-            views: content.interaction_data?.view?.count || 0
+            likes: record.interaction_data?.like?.count || 0,
+            share: record.interaction_data?.share?.count || 0,
+            bookmarks: record.interaction_data?.save?.count || 0,
+            views: record.interaction_data?.view?.count || 0
         };
 
         // Check if user has liked/bookmarked (from localStorage)
         const likesData = getLikesData(UNIFIED_LS_KEY);
-        const isLiked = likesData?.likes?.[content.source_id] || false;
-        const isBookmarked = likesData?.bookmarks?.[content.source_id] || false;
+        const isLiked = likesData?.likes?.[content?.source_id] || false;
+        const isBookmarked = likesData?.bookmarks?.[content?.source_id] || false;
 
         // Handle like click
         const handleLikeClick = async () => {
@@ -230,7 +235,7 @@ const MinisUnifiedWrapper = props => {
             // Update localStorage
             let interactionStorageData = getLikesData(UNIFIED_LS_KEY);
             let lsData = interactionStorageData?.likes || {};
-            lsData[content.source_id] = newLikeStatus;
+            lsData[content?.source_id] = newLikeStatus;
             
             saveLikesData(UNIFIED_LS_KEY, {
                 likes: lsData,
@@ -241,14 +246,14 @@ const MinisUnifiedWrapper = props => {
             dispatch({
                 type: 'UPDATE_FEED_INTERACTION',
                 payload: {
-                    itemId: content.id,
+                    itemId: record.id,
                     type: 'like',
                     status: newLikeStatus,
                     count: newLikeStatus ? interactionCounts.likes + 1 : Math.max(interactionCounts.likes - 1, 0)
                 }
             });
 
-            handleClickEvent(content.source_id, newLikeStatus ? 'like' : 'unlike');
+            handleClickEvent(content?.source_id, newLikeStatus ? 'like' : 'unlike');
         };
 
         // Handle bookmark click
@@ -258,7 +263,7 @@ const MinisUnifiedWrapper = props => {
             // Update localStorage
             let interactionStorageData = getLikesData(UNIFIED_LS_KEY);
             let lsData = interactionStorageData?.bookmarks || {};
-            lsData[content.source_id] = newBookmarkStatus;
+            lsData[content?.source_id] = newBookmarkStatus;
             
             saveLikesData(UNIFIED_LS_KEY, {
                 likes: { ...interactionStorageData?.likes },
@@ -269,14 +274,14 @@ const MinisUnifiedWrapper = props => {
             dispatch({
                 type: 'UPDATE_FEED_INTERACTION',
                 payload: {
-                    itemId: content.id,
+                    itemId: record.id,
                     type: 'save',
                     status: newBookmarkStatus,
                     count: newBookmarkStatus ? interactionCounts.bookmarks + 1 : Math.max(interactionCounts.bookmarks - 1, 0)
                 }
             });
 
-            handleClickEvent(content.source_id, newBookmarkStatus ? 'save' : 'unsave');
+            handleClickEvent(content?.source_id, newBookmarkStatus ? 'save' : 'unsave');
         };
 
         // Handle share click
@@ -285,7 +290,7 @@ const MinisUnifiedWrapper = props => {
             dispatch({
                 type: 'UPDATE_FEED_INTERACTION',
                 payload: {
-                    itemId: content.id,
+                    itemId: record.id,
                     type: 'shares',
                     status: true,
                     count: (interactionCounts.share || 0) + 1
@@ -300,7 +305,7 @@ const MinisUnifiedWrapper = props => {
                 }
             });
 
-            handleClickEvent(content.source_id, 'share');
+            handleClickEvent(content?.source_id, 'share');
         };
 
         const commonCardProps = {
@@ -324,23 +329,23 @@ const MinisUnifiedWrapper = props => {
             case 'memes':
                 return (
                     <ArticleCard
-                        key={content.source_id}
+                        key={content?.source_id}
                         content={content}
                         images={
                             contentType === 'web_stories'
-                                ? content.image_data?.map(img => img.url)
+                                ? content?.image_data?.map(img => img.url)
                                 : null
                         }
                         publisher={{
-                            name: content.source_info?.name || '',
-                            logo: content.source_info?.logo || null,
-                            verified: content.source_info?.verified || false,
-                            id: content.source_info?.id || '',
+                            name: content?.source_info?.name || '',
+                            logo: content?.source_info?.logo || null,
+                            verified: content?.source_info?.verified || false,
+                            id: content?.source_info?.id || '',
                             isSubscribed: content?.source_info?.is_subscribed,
                             isSubscribeAllowed: content?.source_info?.is_subscribe_allowed
                         }}
                         backgroundUrl={
-                            contentType === 'web_stories' ? content.background_url : undefined
+                            contentType === 'web_stories' ? content?.background_url : undefined
                         }
                         isWebStory={contentType === 'web_stories'}
                         isArticle={contentType === 'articles'}
@@ -360,33 +365,33 @@ const MinisUnifiedWrapper = props => {
             case 'reels':
                 return (
                     <VideoTuple
-                        key={content.source_id}
+                        key={content?.source_id}
                         feedData={record}
-                        title={content.title}
-                        url={content.url}
+                        title={content?.title}
+                        url={content?.url}
                         publisher={{
-                            name: content.source_info?.name,
-                            logo: content.source_info?.logo,
-                            verified: content.source_info?.verified || false,
-                            id: content.source_info?.id || '',
+                            name: content?.source_info?.name,
+                            logo: content?.source_info?.logo,
+                            verified: content?.source_info?.verified || false,
+                            id: content?.source_info?.id || '',
                             isSubscribed: content?.source_info?.is_subscribed,
                             isSubscribeAllowed: content?.source_info?.is_subscribe_allowed
                         }}
-                        publishTime={content.vendor_created_at}
+                        publishTime={content?.vendor_created_at}
                         loginDetail={loginDetail}
                         observerInstance={observerRef.current}
                         contentType={contentType}
-                        source_id={content.source_id}
+                        source_id={content?.source_id}
                         insertIntoTimerMap={insertIntoTimerMap}
                         timerMap={timerMap}
                         logTupleDuration={logTupleDuration}
                         handleTupleClick={handleTupleClick}
                         continuationId={continuationId.current}
-                        contentId={content.content_id}
+                        contentId={metadata?.content_id}
                         handleUBAonClick={handleClickEvent}
                         tuplesViewedArrRef={tuplesViewedArrRef.current}
                         tuplesViewedContentIdArrRef={tuplesViewedContentIdArrRef.current}
-                        slug={content.slug}
+                        slug={content?.slug}
                         articlePositon={index}
                         tupleMetaInfo={tupleMetaInfo}
                         setTupleMetaInfo={setTupleMetaInfo}
@@ -482,3 +487,5 @@ const MinisUnifiedWrapper = props => {
 };
 
 export default MinisUnifiedWrapper;
+
+
