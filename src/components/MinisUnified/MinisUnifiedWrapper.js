@@ -16,6 +16,7 @@ import ArticleShimmer from './Shimmers/ArticleShimmer';
 import SeoMetaTags from './SeoMetaTags/SeoMetaTags';
 import MinisErrorScreen from './MinisErrorScreen/MinisErrorScreen';
 import MinisEmptyScreen from './MinisEmptyScreen/MinisEmptyScreen';
+import ErrorMessage from './ErrorMessage';
 import ArticleCard from './ArticleCard/ArticleCard';
 import VideoTuple from './MinisVideo/VideoTuple';
 import KeepBrowsingCard from './KeepBrowsingCard/KeepBrowsingCard';
@@ -36,7 +37,6 @@ const BookmarkedIcon = '/icons/bookmarked.svg';
 const ReactionIcon = '/icons/reaction.svg';
 
 const MinisUnifiedWrapper = props => {
-    const { selectedTags = [] } = props; // Accept selectedTags prop
     const router = useRouter();
     const queryParams = router.query;
     const { filters } = queryParams;
@@ -104,12 +104,6 @@ const MinisUnifiedWrapper = props => {
         }
     }, []);
 
-    // Refetch data when selectedTags change
-    useEffect(() => {
-        if (dataFetchedRef.current && selectedTags.length > 0) {
-            fetchInitialData();
-        }
-    }, [selectedTags]);
 
     useEffect(() => {
         if (lastCardRef.current && observerRef.current) {
@@ -158,8 +152,8 @@ const MinisUnifiedWrapper = props => {
                 filters: {
                     mode: currentMode,
                     saved: isSavedTabSelected.current,
-                    tags: [],
-                    curated_tags: selectedTags, // Use selected tags from props
+                    tags: ["naukri_gulf"],
+                    curated_tags: [],
                     sourceIds: []
                 },
                 loginStatus: loginDetail.isLoggedIn,
@@ -424,8 +418,8 @@ const MinisUnifiedWrapper = props => {
         );
     }
 
-    // Error state
-    if (currentFeed?.error) {
+    // Error state - show full error screen only if no records exist
+    if (currentFeed?.error && records.length === 0) {
         return (
             <>
                 <SeoMetaTags />
@@ -444,6 +438,7 @@ const MinisUnifiedWrapper = props => {
             <SeoMetaTags />
             <div className={styles.unifiedContainer}>
                 <div className={styles.newsContainer}>
+
                     {records.length > 0 ? (
                         records.map((record, index) => {
                             const isLastItem = index === records.length - 1;
@@ -467,12 +462,14 @@ const MinisUnifiedWrapper = props => {
                             );
                         })
                     ) : (
-                        <MinisEmptyScreen
-                            title={noResultText.title}
-                            info={noResultText.info}
-                            ctaText={noResultText.ctaText}
-                            ctaCallback={fetchInitialData}
-                        />
+                        !currentFeed?.error && (
+                            <MinisEmptyScreen
+                                title={noResultText.title}
+                                info={noResultText.info}
+                                ctaText={noResultText.ctaText}
+                                ctaCallback={fetchInitialData}
+                            />
+                        )
                     )}
                     
                     {loading && records.length > 0 && (
@@ -480,6 +477,14 @@ const MinisUnifiedWrapper = props => {
                             <ArticleShimmer count={2} />
                         </div>
                     )}
+                    {/* Show inline error banner if error exists and we have records */}
+                    {currentFeed?.error && records.length > 0 && (
+                        <ErrorMessage 
+                            error={currentFeed.error} 
+                            onRetry={fetchInitialData}
+                        />
+                    )}
+                    
                 </div>
             </div>
         </>
